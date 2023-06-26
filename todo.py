@@ -44,13 +44,31 @@ def showMenu():
     """)
     # Membuat data
     print(f"{ITALIC}{LIGHT_WHITE}           Menu")
-    data = [['1', 'Jakarta'],
-        ['2','Surabaya'],
-        ['2', 'Bandung']]
+    data = [
+        ['1','Daftat Tugas'],
+        ['2','Tambah Tugas Baru'],
+        ['3','Hapus Tugas'],
+        ['4','LIGHT_RED}Exit']
+        ]
 
     # Menentukan header
     header = ['No.', 'Daftar Menu']
 
     # Menampilkan tabel dengan garis border solid
-    print(NORMAL + tabulate(data, headers=header, tablefmt="simple_grid", numalign="left"))
+    print(NORMAL + tabulate(data, headers=header, tablefmt="rounded_grid", numalign="left"))
+    menu = int(input("Pilihan: [1/2/3/4]: "))
+    match menu:
+        case 1:
+            taskList()
+        case 4:
+            exit()    
+def taskList():
+    data = [
+        ['1', 'Ngoding'],
+        ['2', 'Ngoding Lagi']
+        ]
+
+    header = ['No','Tugas']
+    print(NORMAL + "\n" + tabulate(data,headers=header, tablefmt="rounded_grid", numalign="left"))
 showMenu()
+
