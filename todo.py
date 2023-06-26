@@ -28,7 +28,7 @@ CROSSED = "\033[9m"
 NORMAL = "\033[0m"
 
 def showMenu():
-    os.system("cls")
+    os.system("clear")
     time.sleep(.3)
     print(f"""\
  _______         _    __  __      
