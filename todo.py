@@ -26,11 +26,8 @@ BLINK = "\033[5m"
 NEGATIVE = "\033[7m"
 CROSSED = "\033[9m"
 NORMAL = "\033[0m"
-
-def showMenu():
-    os.system("clear")
-    time.sleep(.3)
-    print(f"""\
+os.system("cls||clear")
+print(f"""\
  _______         _    __  __      
 |__   __|       | |  |  \/  |     
     | | __ _ ___| | _| \  / | ___ 
@@ -42,13 +39,16 @@ def showMenu():
 {RED}----------------------------------
 
     """)
+data = []
+def showMenu():
+    time.sleep(.3)
     # Membuat data
     print(f"{ITALIC}{LIGHT_WHITE}           Menu")
     data = [
         ['1','Daftat Tugas'],
         ['2','Tambah Tugas Baru'],
         ['3','Hapus Tugas'],
-        ['4','LIGHT_RED}Exit']
+        ['4','Exit']
         ]
 
     # Menentukan header
@@ -60,15 +60,39 @@ def showMenu():
     match menu:
         case 1:
             taskList()
+        case 2:
+            addTask()
+        case 3:
+            delTask()
         case 4:
             exit()    
 def taskList():
-    data = [
-        ['1', 'Ngoding'],
-        ['2', 'Ngoding Lagi']
-        ]
-
     header = ['No','Tugas']
     print(NORMAL + "\n" + tabulate(data,headers=header, tablefmt="rounded_grid", numalign="left"))
+    showMenu()
+
+def addTask():
+    os.system("cls||clear")
+    task = input("Masukkan Nama Tugas : ")
+    data.append([str(len(data) + 1), task])
+    time.sleep(.3)
+    print("Tugas berhasil ditambahkan!")
+    time.sleep(1)
+    print("")
+    taskList()
+
+def delTask():
+    header = ['No','Tugas']
+    print(NORMAL + "\n" + tabulate(data,headers=header, tablefmt="rounded_grid", numalign="left"))
+    print("")
+    task = int(input("Mau hapus tugas yang mana ? [ex:1] : "))
+    if task <= len(data):
+        deleted = data.pop(task - 1)
+        print(f"Tugas {deleted} berhasil dihapus!")
+    else:
+        print("Tugas tidak ditemukan")
+    time.sleep(.5)
+    print("")
+    taskList()
 showMenu()
 
