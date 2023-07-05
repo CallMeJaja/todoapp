@@ -26,6 +26,7 @@ BLINK = "\033[5m"
 NEGATIVE = "\033[7m"
 CROSSED = "\033[9m"
 NORMAL = "\033[0m"
+
 os.system("cls||clear")
 print(f"""\
  _______         _    __  __      
@@ -38,8 +39,9 @@ print(f"""\
 {GREEN}        Buat Daftar Tugas Mu
 {RED}----------------------------------
 
-    """)
+""")
 data = []
+
 def showMenu():
     time.sleep(.3)
     # Membuat data
@@ -50,11 +52,9 @@ def showMenu():
         ['3','Hapus Tugas'],
         ['4','Exit']
         ]
-
-    # Menentukan header
+ 
     header = ['No.', 'Daftar Menu']
 
-    # Menampilkan tabel dengan garis border solid
     print(NORMAL + tabulate(data, headers=header, tablefmt="rounded_grid", numalign="left"))
     menu = int(input("Pilihan: [1/2/3/4]: "))
     match menu:
